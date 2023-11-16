@@ -35,3 +35,21 @@ void add_task(TaskList* list, Task* task) {
         current->next = task;
     }
 }
+
+void print_tasks_in_order(TaskList* list) {
+    Task* lastPrinted = NULL;
+    while (1) {
+        Task* smallest = NULL;
+        for (Task* task = list->head; task != NULL; task = task->next) {
+            if ((lastPrinted == NULL || difftime(task->date_creation, lastPrinted->date_creation) > 0) &&
+                (smallest == NULL || difftime(task->date_creation, smallest->date_creation) < 0)) {
+                smallest = task;
+            }
+        }
+        if (smallest == NULL) {
+            break;
+        }
+        printf("Task: %s, Date: %s, Status: %d, Days left: %d\n", smallest->nom, ctime(&(smallest->date_creation)), smallest->statut, smallest->jours_restants);
+        lastPrinted = smallest;
+    }
+}
