@@ -49,7 +49,7 @@ void print_tasks_in_order(TaskList* list) {
         if (smallest == NULL) {
             break;
         }
-        printf("Task: %s, Date: %s, Status: %d, Days left: %d\n", smallest->nom, ctime(&(smallest->date_creation)), smallest->statut, smallest->jours_restants);
+        printf("Tache: %s, Date: %s, Statut: %d, Temps restant: %d\n", smallest->nom, ctime(&(smallest->date_creation)), smallest->statut, smallest->jours_restants);
         lastPrinted = smallest;
     }
 }
